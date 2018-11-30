@@ -1,0 +1,17 @@
+<ul *ngFor="let film of listFilms">
+    <!--<li *ngIf="film.categorie == 'Action'" [style.color]="(film.duree=='2 heures')?'blue':'red'" [style.font-size]="(film.duree=='2 heures')?'24px':'auto'">{{film.nom}} - {{film.duree}} - {{film.categorie}}</li>-->
+    <li *ngIf="film.categorie == 'Action'" [ngStyle]= "{'color' : getColor(film.duree) , 'font-size' : getFontSize(film.duree)}" >{{film.nom}} - {{film.duree}} - {{film.categorie}}</li>
+
+</ul>
+**************************************************************
+<ul *ngFor="let film of listFilms">
+        
+    <!--<li [hidden]="film.categorie == 'Comic'" *ngIf="film.categorie != 'Action'"  [style.color]="(film.duree=='2 heures')?'blue':'red'" [style.font-size]="(film.duree=='2 heures')?'24px':'auto'">{{film.nom}} - {{film.duree}} - {{film.categorie}}</li>-->
+    <li [hidden]="film.categorie == 'Comic'" *ngIf="film.categorie != 'Action'"  [ngStyle]= "{'color' : getColor(film.duree) , 'font-size' : getFontSize(film.duree)}" >{{film.nom}} - {{film.duree}} - {{film.categorie}}</li>
+
+</ul>
+<br>
+<button [class] = "getNombreFilms()> 1 ? 'btn-success' : 'btn'" (click)="show()">Calculer</button>
+<br>
+<p>Le nombre de films action : {{(showNumbers ? getNombreFilmsParType('Action') : ' ')}}</p>
+<p>Le nombre de films non action : {{(showNumbers ? getNombreFilms()-getNombreFilmsParType('Action') : ' ')}}</p>
